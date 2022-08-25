@@ -44,8 +44,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Front-End Mentor](https://your-solution-url.com)
-- Live Site URL: [Github](https://your-live-site-url.com)
+- Solution URL: [Front-End Mentor](https://www.frontendmentor.io/solutions/interactive-rating-card-using-flexbox-kL0J-BeQ7W)
+- Live Site URL: [Interactive Rating Card](https://saadaan-hassan.github.io/Interactive-Rating-Card/)
 
 ## My process
 
