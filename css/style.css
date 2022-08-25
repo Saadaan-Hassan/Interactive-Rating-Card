@@ -106,7 +106,6 @@ body {
 main {
   --radius: 20px;
 
-  background-color: var(--color-neutral-400);
   background-image: radial-gradient(circle at top,var(--color-neutral-400), var(--color-neutral-500) 140%);
   max-width: 26rem;
   margin-inline: auto;
