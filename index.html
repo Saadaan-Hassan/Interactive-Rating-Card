@@ -1,72 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="./css/style.css">
-  
-  <title>Frontend Mentor | Interactive rating component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
 
-</head>
-<body>
+    <title>Frontend Mentor | Interactive rating component</title>
+  </head>
+  <body class="flex">
+    <!-- Rating state start -->
 
-  <!-- Rating state start -->
+    <main class="flex">
+      <div id="rating-state">
+        <div>
+          <img src="./images/icon-star.svg" alt="" />
+          <h1>How did we do?</h1>
 
-  <main>
-    <div id="rating-state">
-    <div>
-      <h1>How did we do?</h1>
-    
-      <p>Please let us know how we did with your support request. All feedback is appreciated 
-      to help us improve our offering!</p>
-
-    </div>
-
-    <form action="#">
-      <div class="options-container">
-        <div class="options">
-          <input type="radio" name="select" value="1"><span>1</span>
+          <p>
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
         </div>
-        <div class="options">
-          <input type="radio" name="select" value="2"><span>2</span>
-        </div>
-        <div class="options">
-          <input type="radio" name="select" value="3"><span>3</span>
-        </div>
-        <div class="options">
-          <input type="radio" name="select" value="4"><span>4</span>
-        </div>
-        <div class="options">
-          <input type="radio" name="select" value="5"><span>5</span>
-        </div>
-      </div> 
-      
-      <button type="submit">Submit</button>
-    </form>
-    </div>
-  <!-- Rating state end -->
 
-  <!-- Thank you state start -->
-    <div id="thankyou-state">
-  <p>You selected <span class="rating"></span> out of 5</p>
+        <form id="form" action="#thanyou-state">
+          <div class="options-container flex">
+            <input type="radio" id="option-1" name="select" value="1" /><label
+              for="option-1"
+              class="options"
+              >1</label
+            >
 
-  <h2>Thank you!</h2>
+            <input type="radio" id="option-2" name="select" value="2" /><label
+              for="option-2"
+              class="options"
+              >2</label
+            >
 
-  <p>We appreciate you taking the time to give a rating. If you ever need more support, 
-  don’t hesitate to get in touch!</p>
-</div>
-  <!-- Thank you state end -->
-</main>
+            <input id="option-3" type="radio" name="select" value="3" /><label
+              for="option-3"
+              class="options"
+              >3</label
+            >
 
-  <footer>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</footer>
+            <input id="option-4" type="radio" name="select" value="4" /><label for="option-4" class="options"
+              >4</label
+            >
 
-<script src="./js/main.js"></script>
-</body>
+            <input id="option-5" type="radio" name="select" value="5" /><label for="option-5" class="options"
+              >5</label
+            >
+          </div>
+
+          <button id="btn" class="btn fw-regular" type="submit">Submit</button>
+        </form>
+      </div>
+      <!-- Rating state end -->
+
+      <!-- Thank you state start -->
+      <div id="thankyou-state" class="flex">
+        <img src="./images/illustration-thank-you.svg" alt="" />
+
+
+        <p>You selected <span id="rating"></span> out of 5</p>
+
+        <h2>Thank you!</h2>
+
+        <p>
+          We appreciate you taking the time to give a rating. If you ever need
+          more support, don’t hesitate to get in touch!
+        </p>
+      </div>
+      <!-- Thank you state end -->
+    </main>
+
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="https://www.frontendmentor.io/profile/Saadaan-Hassan">Saadaan Hassan</a>.
+      </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+  </body>
 </html>

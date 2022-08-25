@@ -1,6 +1,6 @@
 # Frontend Mentor - Interactive rating component solution
 
-This is a solution to the [Interactive rating component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Interactive rating component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -10,13 +10,8 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -31,20 +26,26 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+- Desktop Rating Card Preview
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+  ![Desktop Rating Preview](./Screenshots/desktop-rating-preview.png)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+- Desktop Thank You Card Preview
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+  ![Desktop Thank You Preview](./Screenshots/desktop-thank-you-preview.png)
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+- Mobile Rating Card Preview
+
+  ![Mobile Rating Preview](./Screenshots/mobile-rating-preview.png)
+
+- Mobile Thank You Card Preview
+
+  ![Mobile Thank You Preview](./Screenshots/mobile-thank-you-preview.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Front-End Mentor](https://your-solution-url.com)
+- Live Site URL: [Github](https://your-live-site-url.com)
 
 ## My process
 
@@ -53,61 +54,126 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+Overall the project was interesting. I enjoyed making this project. The major part of the project was using the *rating* option selected in the **Rating Card** and using its value in the **Thank You Card**. As it is a Rating Card, so the user must select one and only one option out of 5. At first, when I saw the project, two approaches came to my mind.
 
-### What I learned
+1. First I can display rating options as simple buttons in an HTML file.
+2. Second I can display them as radio buttons.
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I went with the second approach, as it was simple compared to the first approach. If I had gone with the first approach then in javascript I would have had to write extra code for buttons. The purpose of this code would be the same as radio buttons. This means that the user must select only one of the given rating options.
 
-To see how you can add code snippets, see below:
+Going with the second approach made my JS code much shorter and easy. So in my opinion the second approach was the best one.
+
+Here is how I made my "rating options" into radio buttons.
+
+**HTML Code**
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<div class="options-container flex">
+  <input type="radio" id="option-1" name="select" value="1" /><label
+    for="option-1"
+    class="options"
+    >1</label
+  >
+
+  <input type="radio" id="option-2" name="select" value="2" /><label
+    for="option-2"
+    class="options"
+    >2</label
+  >
+
+  <input id="option-3" type="radio" name="select" value="3" /><label
+    for="option-3"
+    class="options"
+    >3</label
+  >
+
+  <input id="option-4" type="radio" name="select" value="4" /><label
+    for="option-4"
+    class="options"
+    >4</label
+  >
+
+  <input id="option-5" type="radio" name="select" value="5" /><label
+    for="option-5"
+    class="options"
+    >5</label
+  >
+</div>
 ```
+
+**CSS Code**
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.options-container {
+  justify-content: space-between;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.options {
+  --size: 2.8125rem;
+
+  font-size: var(--fs-medium);
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-200);
+  font-weight: var(--fw-bold);
+  width: var(--size);
+  height: var(--size);
+  text-align: center;
+  line-height: 3;
+  margin-block: 1rem;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.options:hover {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-100);
+}
+
+input[type="radio"]:checked + .options {
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-100);
 }
 ```
+**Preview:**
+
+![Desktop Thank You Preview](./Screenshots/selected-rating-preview.png)
+
+<br>As one of my issues (making the user select only one option) was resolved, the only issue remaining was using the rating value in the **Thank You Card**. Because of using radio buttons, this issue was also resolved quickly. All I had to do was take the value of the **checked radio button** and show it as the selected rating in the **Thank You Card**.
+Here is how I had done it.
+
+Here how I had done it.
+
+**Javascript Code**
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+const input = document.getElementsByTagName("input");
+const rating = document.getElementById("rating");
+
+let value = 0;
+
+for (let i = 0; i < input.length; i++) {
+  if (input[i].checked) {
+    value = parseInt(input[i].value);
+  }
 }
+
+rating.innerHTML = value;
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+**Preview:**
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+![Desktop Thank You Preview](./Screenshots/desktop-thank-you-preview.png)
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Stack Overflow](https://stackoverflow.com/questions/45259139/how-to-put-text-inside-radio-button) 
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Frontend Mentor - [@Saadaan-Hassan](https://www.frontendmentor.io/profile/Saadaan-Hassan)
